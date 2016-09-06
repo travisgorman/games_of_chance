@@ -2,7 +2,7 @@
 
 
 
-My results are in the console.
+[All the action is in the console.](http://travis.bingo/games_of_chance/)
 
 ```js
 function Card (val, suit) {
