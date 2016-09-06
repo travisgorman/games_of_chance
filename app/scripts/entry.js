@@ -1,7 +1,18 @@
 function Card (val, suit) {
-  this.val = val;
-  this.suit = suit;
+  this.val = val
+  this.suit = suit
 }
+function Hand(){}
+Hand.prototype.c1 = new Card( pickVal(), pickSuit() )
+Hand.prototype.c2 = new Card( pickVal(), pickSuit() )
+Hand.prototype.c3 = new Card( pickVal(), pickSuit() )
+Hand.prototype.c4 = new Card( pickVal(), pickSuit() )
+Hand.prototype.c5 = new Card( pickVal(), pickSuit() )
+
+let hand = new Hand
+
+console.log( hand.c1, hand.c2, hand.c3, hand.c4, hand.c5 );
+
 // generate a random number between 1 and 4
 // if it's even, the suit is black. if odd, it's red.
 // make binary choice between red[0] and red[1] (same with black)
