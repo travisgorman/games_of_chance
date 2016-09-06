@@ -23,7 +23,7 @@ function pickSuit(){
   let suit = Math.ceil(Math.random()*4)
   return (suit % 2 === 0) ?
       black[Math.round(Math.random())] :
-      red[Math.round(Math.random())]k
+      red[Math.round(Math.random())]
 }
 
 // pick value by generating a random number 1-13
