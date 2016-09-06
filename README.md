@@ -1,28 +1,103 @@
-# Basic Build with NPM scripts
-This is a project scaffolding and build tool for the TIY Austin Front-End Engineering course. Feel free to use and enjoy! Feedback and PRs welcome!
+# Practice using JavaScript constructors by simulating playing cards and dice. 
 
-## Features
-- A bare bones scaffolding for an SPA, without any libraries built in
-- A static server for serving up your dev environment via http
-- `app` directory for development, preloaded with an `index.html`, `scripts/entry.js`, `scss/main.scss` and `assets/`
-- `dist` directory for deployable code
-- es2015 and babel, including module syntax
-- mocha test runner, for support testing modules and react components with es2015 and jsx syntax using enzyme and the chai assertion library
-- sass (.scss)
 
-## Installation
-- Clone this repo (or fork then clone, if you prefer)
-- Remove the git history by running `rm -rf .git`
-- Set up a new git repo
-- Run `npm install`
-- if you get permission errors you may need to run `sudo npm install` to install a couple global dependencies
 
-## Use
-- `npm install` will scaffold your project AND start the dev server
-- `npm start` will start the dev server and watch for changes
-- `npm test` will run any test files included in the test folder
-- `npm run deploy` will push the content of `dist/` to gh-pages
-- When the server is running, your site will be live on [http://localhost:8080/](http://localhost:8080/)
+My results are in the console.
 
-## Dependencies
-- `sass` [install guide here](http://sass-lang.com/install)
+```js
+function Card (val, suit) {
+  this.val = val
+  this.suit = suit
+}
+```
+
+### Pick Suit
+* generate a random number between 1 and 4
+* if it's even, the suit is black. if odd, it's red.
+* make binary choice between red[0] and red[1]  
+* (same with black)
+* use Math.random to pick a number between 1 and 0 to use as index
+
+```js
+
+function pickSuit(){
+  let red = ['hearts', 'diamonds']
+  let black = ['spades', 'clubs']
+  let suit = Math.ceil(Math.random()*4)
+  return (suit % 2 === 0) ?
+      black[Math.round(Math.random())] :
+      red[Math.round(Math.random())]k
+}
+```
+
+### Pick Value
+* pick value by generating a random number 1-13
+* conditional logic to define the face cards.
+
+```js
+
+function pickVal(){
+  let val = Math.ceil(Math.random()*13)
+  if (val === 11){
+    val = "Jack"
+  }else if (val === 12){
+    val = "Queen"
+  }else if (val === 13){
+    val = "King"
+  }else if (val === 1){
+    val = "Ace"
+  }
+  return val
+}
+```
+
+### Draw Card
+* use these two functions to determine a suit and value
+* with a ternary conditional for grammar
+
+```js
+function drawCard(){
+  let val = pickVal()
+  let suit = pickSuit()
+  return (val === "Ace" || val === 8 ) ?
+  `You drew an ${val} of ${suit}` : 
+  `You drew a ${val} of ${suit}`
+}
+```
+
+### Create a Die
+*Create a constructor that builds objects representing a six sided dice. The die should keep track of the current value that it shows (1-6) and have a roll method that will simulate rolling the die. Rolling the die should change the current number.*
+
+```js
+
+function Die(value){
+  let self = this;
+  this.value = value;
+  this.roll = function(){
+    self.value = Math.ceil(Math.random()*6)
+    return self.value
+  }
+}
+```
+
+### Get Probabilities
+*Create a function called getProbabilities that will simulate rolling two dice 1000 times. The function should return an array that shows the number of times the sum of the two die added up to 2, 3, 4, ... 12. *
+
+* initiate an arr.length === 11, set each index to 0.
+* for-loop set to iterate 1000 times
+* on each iteration let result equal the sum of both dice
+* since index 0 is 2, 1 is 3, etc...[result - 2] increment tally
+
+```js
+
+function getProbabilities(){
+  let d1 = new Die();
+  let d2 = new Die();
+  var arr = [0,0,0,0,0,0,0,0,0,0,0];
+    for( var i = 0; i <= 999; i++){
+      let result = ( d1.roll() + d2.roll() )
+      arr[(result-2)]++   
+   }
+   return arr;
+}
+```
