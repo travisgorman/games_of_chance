@@ -1,4 +1,4 @@
-# Practice using JavaScript constructors by simulating playing cards and dice. 
+# Practice using constructors by simulating cards and dice. 
 
 
 
@@ -11,12 +11,11 @@ function Card (val, suit) {
 }
 ```
 
-### Pick Suit
+### Pick the Suit
 * generate a random number between 1 and 4
 * if it's even, the suit is black. if odd, it's red.
-* make binary choice between red[0] and red[1]  
-* (same with black)
-* use Math.random to pick a number between 1 and 0 to use as index
+* make binary choice between `red/black[0]` and `red/black[1]`  
+* use `Math.random` to pick a number between 1 and 0 and use that as the index to decide which suit it is.
 
 ```js
 
@@ -30,8 +29,8 @@ function pickSuit(){
 }
 ```
 
-### Pick Value
-* pick value by generating a random number 1-13
+### Pick the Value
+* pick the value by generating a random number 1-13
 * conditional logic to define the face cards.
 
 ```js
@@ -51,8 +50,8 @@ function pickVal(){
 }
 ```
 
-### Draw Card
-* use these two functions to determine a suit and value
+### Draw A Card
+* use the two functions above to determine a suit and value
 * with a ternary conditional for grammar
 
 ```js
